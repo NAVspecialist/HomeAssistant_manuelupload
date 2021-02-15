@@ -1,0 +1,950 @@
+{
+    "version": 1,
+    "key": "lovelace.lovelace_mobil",
+    "data": {
+        "config": {
+            "views": [
+                {
+                    "title": "Forside",
+                    "path": "Forside",
+                    "icon": "mdi:home-circle",
+                    "theme": "",
+                    "panel": false,
+                    "badges": [],
+                    "cards": [
+                        {
+                            "content": "# FORSIDEN \n",
+                            "style": {
+                                ".": "ha-card {\n  background-color: transparent !important;\n  box-shadow: none !important;\n}\n",
+                                "ha-markdown": {
+                                    "$": "h1 {\n  font-size: 25px;\n # font-weight: bold;\n  text-align: center;\n  letter-spacing: '-0.01em';\n}\n"
+                                }
+                            },
+                            "type": "markdown"
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "weather-forecast",
+                                    "entity": "weather.hjem",
+                                    "name": "H\u00f8rsholm",
+                                    "secondary_info_attribute": "friendly_name"
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "name": "Udenfor",
+                                            "entities": [
+                                                "sensor.xiaomi_aqara_temp_sensor_udendors_temperature_measurement"
+                                            ],
+                                            "line_color": "blue",
+                                            "line_width": 8,
+                                            "font_size": 75
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "name": "Nede",
+                                            "entities": [
+                                                "sensor.badevaerelse_nede_sensor_temperature"
+                                            ],
+                                            "line_color": "#e74c3c",
+                                            "line_width": 8,
+                                            "font_size": 75
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "name": "Oppe",
+                                            "entities": [
+                                                "sensor.badevaerelse_oppe_sensor_temperature"
+                                            ],
+                                            "line_color": "var(--accent-color)",
+                                            "line_width": 8,
+                                            "font_size": 75
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "picture-entity",
+                                    "entity": "camera.aarlo_indgang",
+                                    "name": "Kamera K\u00f8kken"
+                                },
+                                {
+                                    "type": "markdown",
+                                    "content": "Hej {{user}} der er {{ states.light | selectattr('state', 'eq', 'on') | map(attribute='entity_id') | list | count }} lamper som er t\u00e6ndt.\n"
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "button",
+                                            "name": "K\u00f8kken",
+                                            "icon": "mdi:knife",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "kokken"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "name": "B\u00f8rnev\u00e6relse",
+                                            "icon": "mdi:panda",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "bornevarelse"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "name": "Kontor nede",
+                                            "icon": "mdi:owl",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "kontor-nede"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "button",
+                                            "name": "Stue",
+                                            "icon": "mdi:sofa-outline",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "stue"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "name": "Kontor oppe",
+                                            "icon": "mdi:peace",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "kontor-oppe"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "name": "Sovev\u00e6relse",
+                                            "icon": "mdi:bed-outline",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "sovevarelse"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "button",
+                                            "name": "Andet",
+                                            "icon": "mdi:comment-question-outline",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "andet"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "name": "Teknikskab",
+                                            "icon": "mdi:wrench-outline",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "teknik-rum"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "name": "test test",
+                                            "icon": "mdi:other",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "other"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "K\u00f8kken",
+                    "path": "kokken",
+                    "icon": "mdi:knife",
+                    "theme": "",
+                    "panel": false,
+                    "badges": [],
+                    "cards": [
+                        {
+                            "content": "# K\u00d8KKEN \n",
+                            "style": {
+                                ".": "ha-card {\n  background-color: transparent !important;\n  box-shadow: none !important;\n}\n",
+                                "ha-markdown": {
+                                    "$": "h1 {\n  font-size: 25px;\n # font-weight: bold;\n  text-align: center;\n  letter-spacing: '-0.01em';\n}\n"
+                                }
+                            },
+                            "type": "markdown"
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "custom:our-groceries-card",
+                                    "show_header": true,
+                                    "entity": "sensor.our_groceries",
+                                    "show_crossed_off": false
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.kokken"
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "button",
+                                            "name": " ",
+                                            "icon": "mdi:arrow-left",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "home"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "name": "Forside",
+                                            "icon": "mdi:home-circle",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "home"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "name": " ",
+                                            "icon": "mdi:arrow-right",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "bornevarelse"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Kontor Nede",
+                    "path": "kontor-nede",
+                    "icon": "mdi:owl",
+                    "theme": "",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "content": "# KONTOR NEDE\n",
+                            "style": {
+                                ".": "ha-card {\n  background-color: transparent !important;\n  box-shadow: none !important;\n}\n",
+                                "ha-markdown": {
+                                    "$": "h1 {\n  font-size: 25px;\n # font-weight: bold;\n  text-align: center;\n  letter-spacing: '-0.01em';\n}\n"
+                                }
+                            },
+                            "type": "markdown"
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "light",
+                                            "name": "Kontor",
+                                            "entity": "light.kontor"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.kontor"
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "button",
+                                            "name": " ",
+                                            "icon": "mdi:arrow-left",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "bornevarelse"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "name": "Forside",
+                                            "icon": "mdi:home-circle",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "home"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "name": " ",
+                                            "icon": "mdi:arrow-right",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "stue"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "B\u00f8rnev\u00e6relse",
+                    "path": "bornevarelse",
+                    "icon": "mdi:panda",
+                    "theme": "",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "content": "# B\u00d8RNEV\u00c6RELSE \n",
+                            "style": {
+                                ".": "ha-card {\n  background-color: transparent !important;\n  box-shadow: none !important;\n}\n",
+                                "ha-markdown": {
+                                    "$": "h1 {\n  font-size: 25px;\n # font-weight: bold;\n  text-align: center;\n  letter-spacing: '-0.01em';\n}\n"
+                                }
+                            },
+                            "type": "markdown"
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "light",
+                                            "name": "R\u00f8de lampe",
+                                            "entity": "light.bornevaerelse"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.bornevaerelse"
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "button",
+                                            "name": " ",
+                                            "icon": "mdi:arrow-left",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "kokken"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "name": "Forside",
+                                            "icon": "mdi:home-circle",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "home"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "name": " ",
+                                            "icon": "mdi:arrow-right",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "kontor-nede"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Stue",
+                    "path": "stue",
+                    "icon": "mdi:sofa-outline",
+                    "theme": "",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "content": "# STUEN \n",
+                            "style": {
+                                ".": "ha-card {\n  background-color: transparent !important;\n  box-shadow: none !important;\n}\n",
+                                "ha-markdown": {
+                                    "$": "h1 {\n  font-size: 25px;\n # font-weight: bold;\n  text-align: center;\n  letter-spacing: '-0.01em';\n}\n"
+                                }
+                            },
+                            "type": "markdown"
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "light",
+                                            "name": "De 3 lamper",
+                                            "entity": "light.stue"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.stue"
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.pladespiller"
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "button",
+                                            "name": " ",
+                                            "icon": "mdi:arrow-left",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "kontor-nede"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "name": "Forside",
+                                            "icon": "mdi:home-circle",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "home"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "name": " ",
+                                            "icon": "mdi:arrow-right",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "kontor-oppe"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Kontor Oppe",
+                    "path": "kontor-oppe",
+                    "icon": "mdi:peace",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "content": "# KONTOR OPPE \n",
+                            "style": {
+                                ".": "ha-card {\n  background-color: transparent !important;\n  box-shadow: none !important;\n}\n",
+                                "ha-markdown": {
+                                    "$": "h1 {\n  font-size: 25px;\n # font-weight: bold;\n  text-align: center;\n  letter-spacing: '-0.01em';\n}\n"
+                                }
+                            },
+                            "type": "markdown"
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "light",
+                                            "name": "Hvide lampe",
+                                            "entity": "light.hvide_arbejdsbord"
+                                        },
+                                        {
+                                            "type": "light",
+                                            "name": "Verner panton lampe",
+                                            "entity": "light.verner_panton_lampe"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "button",
+                                            "name": " ",
+                                            "icon": "mdi:arrow-left",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "stue"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "name": "Forside",
+                                            "icon": "mdi:home-circle",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "home"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "name": " ",
+                                            "icon": "mdi:arrow-right",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "sovevarelse"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Sovev\u00e6relse",
+                    "path": "sovevarelse",
+                    "icon": "mdi:bed-outline",
+                    "theme": "",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "content": "# SOVEV\u00c6RELSE\n",
+                            "style": {
+                                ".": "ha-card {\n  background-color: transparent !important;\n  box-shadow: none !important;\n}\n",
+                                "ha-markdown": {
+                                    "$": "h1 {\n  font-size: 25px;\n # font-weight: bold;\n  text-align: center;\n  letter-spacing: '-0.01em';\n}\n"
+                                }
+                            },
+                            "type": "markdown"
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "light",
+                                            "entity": "light.sovevaerelse",
+                                            "name": "Loftslampe"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.sovevaerelse"
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "button",
+                                            "name": " ",
+                                            "icon": "mdi:arrow-left",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "kontor-oppe"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "name": "Forside",
+                                            "icon": "mdi:home-circle",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "home"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "name": " ",
+                                            "icon": "mdi:arrow-right",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "andet"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Andet",
+                    "path": "andet",
+                    "icon": "mdi:comment-question-outline",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "content": "# ANDET \n",
+                            "style": {
+                                ".": "ha-card {\n  background-color: transparent !important;\n  box-shadow: none !important;\n}\n",
+                                "ha-markdown": {
+                                    "$": "h1 {\n  font-size: 25px;\n # font-weight: bold;\n  text-align: center;\n  letter-spacing: '-0.01em';\n}\n"
+                                }
+                            },
+                            "type": "markdown"
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "entities",
+                                            "title": "Alt Lys",
+                                            "entities": [
+                                                "light.sovevaerelse",
+                                                "light.stue",
+                                                "light.kontor",
+                                                "light.bornevaerelse",
+                                                "light.hvide_arbejdsbord",
+                                                "light.panton_lampe",
+                                                "light.udendors",
+                                                "light.badevaerelse_nede",
+                                                "light.badevaerelse_oppe"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "button",
+                                            "name": " ",
+                                            "icon": "mdi:arrow-left",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "sovevarelse"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "name": "Forside",
+                                            "icon": "mdi:home-circle",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "home"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "name": " ",
+                                            "icon": "mdi:arrow-right",
+                                            "entity": "script.buttonpress",
+                                            "tap_action": {
+                                                "action": "navigate",
+                                                "navigation_path": "teknik-rum"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Teknik Rum",
+                    "path": "teknik-rum",
+                    "icon": "mdi:wrench-outline",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "content": "# TEKNIK \n",
+                            "style": {
+                                ".": "ha-card {\n  background-color: transparent !important;\n  box-shadow: none !important;\n}\n",
+                                "ha-markdown": {
+                                    "$": "h1 {\n  font-size: 25px;\n # font-weight: bold;\n  text-align: center;\n  letter-spacing: '-0.01em';\n}\n"
+                                }
+                            },
+                            "type": "markdown"
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "custom:mini-graph-card",
+                                    "aggregate_func": "max",
+                                    "color_thresholds": [
+                                        {
+                                            "color": "#17DD1B",
+                                            "value": 0
+                                        },
+                                        {
+                                            "color": "#f39c12",
+                                            "value": 0.2
+                                        },
+                                        {
+                                            "color": "#FF5600",
+                                            "value": 0.4
+                                        },
+                                        {
+                                            "color": "#c0392b",
+                                            "value": 1
+                                        }
+                                    ],
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.eloverblik_energy_0_1",
+                                            "name": "00-01"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_1_2",
+                                            "name": "01-02"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_2_3",
+                                            "name": "02-03"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_3_4",
+                                            "name": "03-04"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_4_5",
+                                            "name": "04-05"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_5_6",
+                                            "name": "05-06"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_6_7",
+                                            "name": "06-07"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_7_8",
+                                            "name": "07-08"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_8_9",
+                                            "name": "08-09"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_9_10",
+                                            "name": "09-10"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_10_11",
+                                            "name": "10-11"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_11_12",
+                                            "name": "11-12"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_12_13",
+                                            "name": "12-13"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_13_14",
+                                            "name": "13-14"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_14_15",
+                                            "name": "14-15"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_15_16",
+                                            "name": "15-16"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_16_17",
+                                            "name": "16-17"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_17_18",
+                                            "name": "17-18"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_18_19",
+                                            "name": "18-19"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_19_20",
+                                            "name": "19-20"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_20_21",
+                                            "name": "20-21"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_21_22",
+                                            "name": "21-22"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_22_23",
+                                            "name": "22-23"
+                                        },
+                                        {
+                                            "entity": "sensor.eloverblik_energy_23_24",
+                                            "name": "23-24"
+                                        }
+                                    ],
+                                    "group_by": "date",
+                                    "hour24": true,
+                                    "name": "Str\u00f8mforbrug - Ahornvej - Time for Time",
+                                    "show": {
+                                        "fill": true,
+                                        "graph": "bar",
+                                        "labels": false,
+                                        "legend": false
+                                    }
+                                },
+                                {
+                                    "type": "custom:mini-graph-card",
+                                    "aggregate_func": "max",
+                                    "color_thresholds": [
+                                        {
+                                            "color": "#17DD1B",
+                                            "value": 0
+                                        },
+                                        {
+                                            "color": "#f39c12",
+                                            "value": 0.2
+                                        },
+                                        {
+                                            "color": "#FF5600",
+                                            "value": 0.4
+                                        },
+                                        {
+                                            "color": "#c0392b",
+                                            "value": 1
+                                        }
+                                    ],
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.eloverblik_energy_total",
+                                            "name": "Total"
+                                        }
+                                    ],
+                                    "group_by": "date",
+                                    "hour24": true,
+                                    "name": "Str\u00f8mforbrug - Ahornvej Total pr. dag",
+                                    "show": {
+                                        "fill": true,
+                                        "graph": "bar",
+                                        "labels": false,
+                                        "legend": false
+                                    }
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "name": "Udenfor",
+                                            "entities": [
+                                                "sensor.xiaomi_aqara_temp_sensor_udendors_temperature_measurement"
+                                            ],
+                                            "line_color": "blue",
+                                            "line_width": 8,
+                                            "font_size": 75
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "name": "Nede",
+                                            "entities": [
+                                                "sensor.badevaerelse_nede_sensor_temperature"
+                                            ],
+                                            "line_color": "#e74c3c",
+                                            "line_width": 8,
+                                            "font_size": 75
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "name": "Oppe",
+                                            "entities": [
+                                                "sensor.badevaerelse_oppe_sensor_temperature"
+                                            ],
+                                            "line_color": "var(--accent-color)",
+                                            "line_width": 8,
+                                            "font_size": 75
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "custom:mini-graph-card",
+                            "name": "Str\u00f8mforbrug de sidste 24 timer",
+                            "entities": [
+                                "sensor.eloverblik_energy_total"
+                            ],
+                            "line_color": "Green",
+                            "line_width": 8,
+                            "font_size": 75,
+                            "hour24": true,
+                            "labels": true,
+                            "Legend": true
+                        }
+                    ]
+                },
+                {
+                    "title": "Uplacerbare",
+                    "path": "uplacerbare",
+                    "badges": [],
+                    "cards": []
+                }
+            ]
+        }
+    }
+}

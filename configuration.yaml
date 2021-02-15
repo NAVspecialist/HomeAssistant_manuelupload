@@ -1,0 +1,102 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+# BEGIN: Indsat af Palle
+# Tilføj det i secrets.yaml
+ourgroceries:
+  username: !secret our_groceries_username
+  password: !secret our_groceries_password
+
+#arlo:
+#  username: !secret arlo_username
+#  password: !secret arlo_password
+
+aarlo:
+  username: !secret arlo_username
+  password: !secret arlo_password
+  refresh_devices_every: 2
+  stream_timeout: 120
+  reconnect_every: 90
+ # tfa_host: imap,gmail.com
+ # tfa_username: !secret aarlogmail
+ # tfa_password: !secret aarlogmailpassword
+  hide_deprecated_services: false
+
+alarm_control_panel:
+  - platform: aarlo
+    away_mode_name: armed
+    home_mode_name: home
+    night_mode_name: night
+    trigger_time: 30
+    alarm_volume: 1
+
+camera:
+  - platform: aarlo
+
+binary_sensor:
+  - platform: aarlo
+    monitored_conditions:
+      - motion
+      - sound
+      - ding
+      - cry
+      - connectivity    
+
+sensor:
+  - platform: aarlo
+    monitored_conditions:
+      - total_cameras
+      - last_capture
+      - recent_activity
+      - captured_today
+      - battery_level
+      - signal_strength
+      - temperature
+      - humidity
+      - air_quality
+
+media_player:
+  - platform: aarlo
+
+light:
+  - platform: aarlo
+
+switch:
+  - platform: aarlo
+    snapshot: true
+
+stream:    
+
+#lovelace:
+#  mode: yaml
+
+frontend:
+#  themes: !include themes.yaml
+  themes: !include_dir_merge_named themes
+# END
+
+script:
+  buttonpress:
+    sequence:
+    - event: ButtonPress
+      event_data:
+        button: buttonpress
+
+switch:
+  - platform: aarlo
+    siren: True
+    all_sirens: True
+    snapshot: True
+    doorbell_silence: True
+    siren_volume: 1
+    siren_duration: 10
